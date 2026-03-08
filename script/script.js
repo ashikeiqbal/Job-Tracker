@@ -1,27 +1,3 @@
-// let currentTab = "all";
-
-
-
-// function switchTab(tab){
-//     // console.log("Switching to tab: " + tab);
-//     const tabs = ["all", "interview", "rejected"];
-
-//     for(const t of tabs){
-//         const tabName = document.getElementById("tab-" + t);
-//         if(t === tab){
-//             tabName.classList.add("bg-black", "text-white");
-//             tabName.classList.remove("bg-white", "text-[#64748B]");
-//         }
-//         else{
-//             tabName.classList.remove("bg-black", "text-white");
-//             tabName.classList.add("bg-white", "text-[#64748B]");
-//         }
-
-//     }
-// }
-
-// switchTab(currentTab)
-
 
 let currentTab = "all";
 
@@ -56,25 +32,25 @@ function switchTab(tab) {
     emptyState.classList.add("hidden");
 
     if (tab === "all") {
-        allContainer.classList.remove("hidden");        
+        allContainer.classList.remove("hidden");
         interviewContainer.classList.add("hidden");
         rejectedContainer.classList.add("hidden");
-        if(allContainer.children.length < 1){
+        if (allContainer.children.length < 1) {
             emptyState.classList.remove("hidden");
         }
-        
+
     } else if (tab === "interview") {
-        interviewContainer.classList.remove("hidden");        
+        interviewContainer.classList.remove("hidden");
         allContainer.classList.add("hidden");
         rejectedContainer.classList.add("hidden");
-        if(interviewContainer.children.length < 1){
+        if (interviewContainer.children.length < 1) {
             emptyState.classList.remove("hidden");
         }
     } else if (tab === "rejected") {
-        rejectedContainer.classList.remove("hidden");        
+        rejectedContainer.classList.remove("hidden");
         allContainer.classList.add("hidden");
         interviewContainer.classList.add("hidden");
-        if(rejectedContainer.children.length < 1){
+        if (rejectedContainer.children.length < 1) {
             emptyState.classList.remove("hidden");
         }
     }
@@ -110,41 +86,42 @@ document.querySelector("main")
 
         if (clickedElement.classList.contains("interview-btn")) {
             status.innerText = "Interview";
+            status.classList.remove("text-red-500");
+            status.classList.add("text-green-500");
             interviewContainer.appendChild(card);
-            
-        }else if (clickedElement.classList.contains("rejected-btn")) {
+
+        } else if (clickedElement.classList.contains("rejected-btn")) {
             status.innerText = "Rejected";
+            status.classList.remove("text-green-500");
+            status.classList.add("text-red-500");
             rejectedContainer.appendChild(card);
-        }else if (clickedElement.classList.contains("delete-btn")) {
-            console.log(parent);
-            console.log(card);
-            
+        } else if (clickedElement.classList.contains("delete-btn")) {
             parent.removeChild(card);
-            
+
         }
         updateStats();
     })
 
 
-    // Update Stat
+// Update Stat
 
-    function updateStats(){
-        // statTotal.innerText = allContainer.children.length;
-        // statInterview.innerText = interviewContainer.children.length;
-        // statRejected.innerText = rejectedContainer.children.length;
+function updateStats() {
+    // statTotal.innerText = allContainer.children.length;
+    // statInterview.innerText = interviewContainer.children.length;
+    // statRejected.innerText = rejectedContainer.children.length;
 
-        const counts = {
-            all: allContainer.children.length,
-            interview: interviewContainer.children.length,
-            rejected: rejectedContainer.children.length
-        }
-        statTotal.innerText = counts.all;
-        statInterview.innerText = counts.interview;
-        statRejected.innerText = counts.rejected;
-        statAvailable.innerText = counts[currentTab];
-
-        if(counts[currentTab] < 1){
-            emptyState.classList.remove("hidden");
-        }
+    const counts = {
+        all: allContainer.children.length,
+        interview: interviewContainer.children.length,
+        rejected: rejectedContainer.children.length
     }
-    updateStats();
+    statTotal.innerText = counts.all;
+    statInterview.innerText = counts.interview;
+    statRejected.innerText = counts.rejected;
+    statAvailable.innerText = counts[currentTab];
+
+    if (counts[currentTab] < 1) {
+        emptyState.classList.remove("hidden");
+    }
+}
+updateStats();
