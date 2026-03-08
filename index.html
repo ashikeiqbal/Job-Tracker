@@ -25,50 +25,56 @@
 </head>
 
 <body class="font-geist bg-[#F8FAFC] ">
-    <header class="w-[80%] mx-auto space-y-5 pt-10">
+    <header class="w-[70%] mx-auto space-y-5 pt-10">
         <h2 class="header-title text-[2rem] font-bold text-[#002C5C]">Job Application Tracker</h2>
         <div class="header-cards grid grid-cols-3 gap-4">
             <div class="bg-white p-5 rounded-md space-y-2">
                 <p>Total</p>
-                <p class="text-2xl font-bold  text-[#002C5C] " id="total">0</p>
+                <p class="text-2xl font-bold  text-[#002C5C] " id="stat-total">0</p>
             </div>
             <div class="bg-white p-5 rounded-md space-y-2">
                 <p>Interview</p>
-                <p class="text-2xl font-bold text-green-500" id="interview-count">0</p>
+                <p class="text-2xl font-bold text-green-500" id="stat-interview">0</p>
             </div>
             <div class="bg-white p-5 rounded-md space-y-2">
                 <p>Rejected</p>
-                <p class="text-2xl font-bold text-red-500" id="rejected-count">0</p>
+                <p class="text-2xl font-bold text-red-500" id="stat-rejected">0</p>
             </div>
         </div>
     </header>
 
     <hr class="border border-gray-100 my-10">
 
-    <main class="w-[80%] mx-auto space-y-5">
+    <main class="w-[70%] mx-auto space-y-5">
         <div class="flex justify-between">
             <h2 class="header-title text-[1.25rem] font-bold text-[#002C5C]">Available Jobs</h2>
-            <h4 class="header-title text-[1rem] font-semibold text-gray-500"><span id="total-jobs-count">8</span> jobs</h4>
+            <h4 class="header-title text-[1rem] font-semibold text-gray-500"><span id="available">8</span> jobs</h4>
         </div>
-        <div class="flex gap-5 mb-6">
-            <button onclick="toggleStyle('all-filter-btn')"
-                class="bg-white  px-5 py-2 rounded-sm font-medium text-[18px] btn btn-soft"
-                id="all-filter-btn">All</button>
-            <button onclick="toggleStyle('thriving-filter-btn')"
-                class="bg-white px-5 py-2 rounded-sm font-medium text-[18px] btn btn-soft"
-                id="interview-filter-btn">Interview</button>
-            <button onclick="toggleStyle('struggling-filter-btn')"
-                class="bg-white px-5 py-2 rounded-sm font-medium text-[18px] btn btn-soft"
-                id="rejected-filter-btn">Rejected</button>
+        <div class=" flex gap-5 mb-6">
+            <button 
+                onclick="switchTab('all')"
+                class="bg-white text-[#64748B]  px-5 py-2 rounded-sm font-medium text-[18px] btn btn-soft"
+                id="tab-all">All</button>
+            <button 
+                onclick="switchTab('interview')"
+                class="bg-white text-[#64748B] px-5 py-2 rounded-sm font-medium text-[18px] btn btn-soft"
+                id="tab-interview">Interview</button>
+            <button 
+                onclick="switchTab('rejected')"
+                class="bg-white text-[#64748B] px-5 py-2 rounded-sm font-medium text-[18px] btn btn-soft"
+                id="tab-rejected">Rejected</button>
         </div>
-        <!-- Empty Card -->
-        <section class="flex flex-col items-center p-30 bg-white rounded-xl space-y-2 hidden" id="default-card">
-            <img class="w-[120px] mb-6" src="jobs.png" alt="">
-            <h2 class="header-title text-[1.25rem] font-bold text-[#002C5C]">No jobs available</h2>
-            <p class="post-name text-[#64748B] text-base font-normal">Check back soon for new job opportunities</p>
-        </section>
         
-        <section id="all-cards" class=" space-y-5">
+        <!-- Interview Section -->
+        <section class="hidden" id="interview-container">
+            
+        </section>
+        <!-- Rejected Section -->
+        <section class="hidden" id="rejected-container">
+            
+        </section>
+        <!-- All Card Section -->
+        <section id="all-container" class="hidden space-y-5">
             <!-- Card-1 -->
             <div class="card grid grid-cols-2 justify-end space-y-5 border border-gray-300 p-10 ">
                 <!-- Main Left -->
@@ -85,7 +91,7 @@
                     </div>
                     <!-- Part-3 -->
                     <div class="space-y-3">
-                        <p class="bg-[#EEF4FF] btn">Not Applied</p>
+                        <p class="stats bg-[#EEF4FF] btn">Not Applied</p>
                         <p class="text-[#323B49] text-base font-normal">Build cross-platform mobile applications using React Native. Work on products used by millions of users worldwide.</p>
                     </div>
                     <!-- Part-4 -->
@@ -98,10 +104,10 @@
                 </div>
                 <!-- Main Right -->
                 <div class="text-end">
-                    <button class="text-gray-400 border border-gray-200 rounded-full p-2 aspect-square btn"><i class="fa-solid fa-trash-can"></i></button>
+                    <button class="delete-btn text-gray-400 border border-gray-200 rounded-full p-2 aspect-square btn"><i class="fa-solid fa-trash-can pointer-events-none"></i></button>
                 </div>
             </div>
-            <!-- Card-2 -->
+            <!-- Card-1 -->
             <div class="card grid grid-cols-2 justify-end space-y-5 border border-gray-300 p-10 ">
                 <!-- Main Left -->
                 <div class="space-y-5">
@@ -117,7 +123,7 @@
                     </div>
                     <!-- Part-3 -->
                     <div class="space-y-3">
-                        <p class="bg-[#EEF4FF] btn">Not Applied</p>
+                        <p class="stats bg-[#EEF4FF] btn">Not Applied</p>
                         <p class="text-[#323B49] text-base font-normal">Build cross-platform mobile applications using React Native. Work on products used by millions of users worldwide.</p>
                     </div>
                     <!-- Part-4 -->
@@ -130,10 +136,10 @@
                 </div>
                 <!-- Main Right -->
                 <div class="text-end">
-                    <button class="text-gray-400 border border-gray-200 rounded-full p-2 aspect-square btn"><i class="fa-solid fa-trash-can"></i></button>
+                    <button class="delete-btn text-gray-400 border border-gray-200 rounded-full p-2 aspect-square btn"><i class="fa-solid fa-trash-can pointer-events-none"></i></button>
                 </div>
             </div>
-            <!-- Card-3 -->
+            <!-- Card-1 -->
             <div class="card grid grid-cols-2 justify-end space-y-5 border border-gray-300 p-10 ">
                 <!-- Main Left -->
                 <div class="space-y-5">
@@ -149,7 +155,7 @@
                     </div>
                     <!-- Part-3 -->
                     <div class="space-y-3">
-                        <p class="bg-[#EEF4FF] btn">Not Applied</p>
+                        <p class="stats bg-[#EEF4FF] btn">Not Applied</p>
                         <p class="text-[#323B49] text-base font-normal">Build cross-platform mobile applications using React Native. Work on products used by millions of users worldwide.</p>
                     </div>
                     <!-- Part-4 -->
@@ -162,10 +168,10 @@
                 </div>
                 <!-- Main Right -->
                 <div class="text-end">
-                    <button class="text-gray-400 border border-gray-200 rounded-full p-2 aspect-square btn"><i class="fa-solid fa-trash-can"></i></button>
+                    <button class="delete-btn text-gray-400 border border-gray-200 rounded-full p-2 aspect-square btn"><i class="fa-solid fa-trash-can pointer-events-none"></i></button>
                 </div>
             </div>
-            <!-- Card-4 -->
+            <!-- Card-1 -->
             <div class="card grid grid-cols-2 justify-end space-y-5 border border-gray-300 p-10 ">
                 <!-- Main Left -->
                 <div class="space-y-5">
@@ -181,7 +187,7 @@
                     </div>
                     <!-- Part-3 -->
                     <div class="space-y-3">
-                        <p class="bg-[#EEF4FF] btn">Not Applied</p>
+                        <p class="stats bg-[#EEF4FF] btn">Not Applied</p>
                         <p class="text-[#323B49] text-base font-normal">Build cross-platform mobile applications using React Native. Work on products used by millions of users worldwide.</p>
                     </div>
                     <!-- Part-4 -->
@@ -194,10 +200,10 @@
                 </div>
                 <!-- Main Right -->
                 <div class="text-end">
-                    <button class="text-gray-400 border border-gray-200 rounded-full p-2 aspect-square btn"><i class="fa-solid fa-trash-can"></i></button>
+                    <button class="delete-btn text-gray-400 border border-gray-200 rounded-full p-2 aspect-square btn"><i class="fa-solid fa-trash-can pointer-events-none"></i></button>
                 </div>
             </div>
-            <!-- Card-5 -->
+            <!-- Card-1 -->
             <div class="card grid grid-cols-2 justify-end space-y-5 border border-gray-300 p-10 ">
                 <!-- Main Left -->
                 <div class="space-y-5">
@@ -213,7 +219,7 @@
                     </div>
                     <!-- Part-3 -->
                     <div class="space-y-3">
-                        <p class="bg-[#EEF4FF] btn">Not Applied</p>
+                        <p class="stats bg-[#EEF4FF] btn">Not Applied</p>
                         <p class="text-[#323B49] text-base font-normal">Build cross-platform mobile applications using React Native. Work on products used by millions of users worldwide.</p>
                     </div>
                     <!-- Part-4 -->
@@ -226,10 +232,10 @@
                 </div>
                 <!-- Main Right -->
                 <div class="text-end">
-                    <button class="text-gray-400 border border-gray-200 rounded-full p-2 aspect-square btn"><i class="fa-solid fa-trash-can"></i></button>
+                    <button class="delete-btn text-gray-400 border border-gray-200 rounded-full p-2 aspect-square btn"><i class="fa-solid fa-trash-can pointer-events-none"></i></button>
                 </div>
             </div>
-            <!-- Card-6 -->
+            <!-- Card-1 -->
             <div class="card grid grid-cols-2 justify-end space-y-5 border border-gray-300 p-10 ">
                 <!-- Main Left -->
                 <div class="space-y-5">
@@ -245,7 +251,7 @@
                     </div>
                     <!-- Part-3 -->
                     <div class="space-y-3">
-                        <p class="bg-[#EEF4FF] btn">Not Applied</p>
+                        <p class="stats bg-[#EEF4FF] btn">Not Applied</p>
                         <p class="text-[#323B49] text-base font-normal">Build cross-platform mobile applications using React Native. Work on products used by millions of users worldwide.</p>
                     </div>
                     <!-- Part-4 -->
@@ -258,10 +264,10 @@
                 </div>
                 <!-- Main Right -->
                 <div class="text-end">
-                    <button class="text-gray-400 border border-gray-200 rounded-full p-2 aspect-square btn"><i class="fa-solid fa-trash-can"></i></button>
+                    <button class="delete-btn text-gray-400 border border-gray-200 rounded-full p-2 aspect-square btn"><i class="fa-solid fa-trash-can pointer-events-none"></i></button>
                 </div>
             </div>
-            <!-- Card-7 -->
+            <!-- Card-1 -->
             <div class="card grid grid-cols-2 justify-end space-y-5 border border-gray-300 p-10 ">
                 <!-- Main Left -->
                 <div class="space-y-5">
@@ -277,7 +283,7 @@
                     </div>
                     <!-- Part-3 -->
                     <div class="space-y-3">
-                        <p class="bg-[#EEF4FF] btn">Not Applied</p>
+                        <p class="stats bg-[#EEF4FF] btn">Not Applied</p>
                         <p class="text-[#323B49] text-base font-normal">Build cross-platform mobile applications using React Native. Work on products used by millions of users worldwide.</p>
                     </div>
                     <!-- Part-4 -->
@@ -290,10 +296,10 @@
                 </div>
                 <!-- Main Right -->
                 <div class="text-end">
-                    <button class="text-gray-400 border border-gray-200 rounded-full p-2 aspect-square btn"><i class="fa-solid fa-trash-can"></i></button>
+                    <button class="delete-btn text-gray-400 border border-gray-200 rounded-full p-2 aspect-square btn"><i class="fa-solid fa-trash-can pointer-events-none"></i></button>
                 </div>
             </div>
-            <!-- Card-8 -->
+            <!-- Card-1 -->
             <div class="card grid grid-cols-2 justify-end space-y-5 border border-gray-300 p-10 ">
                 <!-- Main Left -->
                 <div class="space-y-5">
@@ -309,7 +315,7 @@
                     </div>
                     <!-- Part-3 -->
                     <div class="space-y-3">
-                        <p class="bg-[#EEF4FF] btn">Not Applied</p>
+                        <p class="stats bg-[#EEF4FF] btn">Not Applied</p>
                         <p class="text-[#323B49] text-base font-normal">Build cross-platform mobile applications using React Native. Work on products used by millions of users worldwide.</p>
                     </div>
                     <!-- Part-4 -->
@@ -322,10 +328,17 @@
                 </div>
                 <!-- Main Right -->
                 <div class="text-end">
-                    <button class="text-gray-400 border border-gray-200 rounded-full p-2 aspect-square btn"><i class="fa-solid fa-trash-can"></i></button>
+                    <button class="delete-btn text-gray-400 border border-gray-200 rounded-full p-2 aspect-square btn"><i class="fa-solid fa-trash-can pointer-events-none"></i></button>
                 </div>
             </div>
             
+            
+        </section>
+        <!-- Empty Card -->
+        <section class=" flex flex-col items-center p-30 bg-white rounded-xl space-y-2 " id="empty-card">
+            <img class="w-[120px] mb-6" src="jobs.png" alt="">
+            <h2 class="header-title text-[1.25rem] font-bold text-[#002C5C]">No jobs available</h2>
+            <p class="post-name text-[#64748B] text-base font-normal">Check back soon for new job opportunities</p>
         </section>
     </main>
     <script src="script/script.js"></script>
