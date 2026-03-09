@@ -37,6 +37,7 @@ Better performance
 
 Works for dynamically added elements
 
+
 5. What is the difference between preventDefault() and stopPropagation()?
 
 preventDefault() → Stops the browser’s default action.
