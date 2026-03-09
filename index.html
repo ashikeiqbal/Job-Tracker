@@ -17,26 +17,26 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet">
     <!-- Css Style here -->
-     <style>
-        .font-geist{
+    <style>
+        .font-geist {
             font-family: "Geist", sans-serif;
         }
-     </style>
+    </style>
 </head>
 
 <body class="font-geist bg-[#F8FAFC] min-h-screen">
-    <header class="w-[70%] mx-auto space-y-5 pt-10">
+    <header class="w-[90%] md:w-[70%] mx-auto space-y-5 pt-10">
         <h2 class="header-title text-[2rem] font-bold text-[#002C5C]">Job Application Tracker</h2>
-        <div class="header-cards grid grid-cols-3 gap-4">
-            <div class="bg-white p-5 rounded-md space-y-2">
+        <div class="header-cards grid grid-cols-1 md:grid-cols-3 gap-4 md:text-start text-center ">
+            <div class="bg-white p-2 md:p-5 rounded-md space-y-2">
                 <p>Total</p>
                 <p class="text-2xl font-bold  text-[#002C5C] " id="stat-total">0</p>
             </div>
-            <div class="bg-white p-5 rounded-md space-y-2">
+            <div class="bg-white p-2 md:p-5 rounded-md space-y-2">
                 <p>Interview</p>
                 <p class="text-2xl font-bold text-green-500" id="stat-interview">0</p>
             </div>
-            <div class="bg-white p-5 rounded-md space-y-2">
+            <div class="bg-white p-2 md:p-5 rounded-md space-y-2">
                 <p>Rejected</p>
                 <p class="text-2xl font-bold text-red-500" id="stat-rejected">0</p>
             </div>
@@ -45,57 +45,56 @@
 
     <hr class="border border-gray-100 my-10">
 
-    <main class="w-[70%] mx-auto space-y-5">
+    <main class="w-[90%] md:w-[70%] mx-auto space-y-5">
         <div class="flex justify-between">
             <h2 class="header-title text-[1.25rem] font-bold text-[#002C5C]">Available Jobs</h2>
             <h4 class="header-title text-[1rem] font-semibold text-gray-500"><span id="available">8</span> jobs</h4>
         </div>
         <div class=" flex gap-5 mb-6">
-            <button 
-                onclick="switchTab('all')"
+            <button onclick="switchTab('all')"
                 class="bg-white text-[#64748B]  px-5 py-2 rounded-sm font-medium text-[18px] btn btn-soft"
                 id="tab-all">All</button>
-            <button 
-                onclick="switchTab('interview')"
+            <button onclick="switchTab('interview')"
                 class="bg-white text-[#64748B] px-5 py-2 rounded-sm font-medium text-[18px] btn btn-soft"
                 id="tab-interview">Interview</button>
-            <button 
-                onclick="switchTab('rejected')"
+            <button onclick="switchTab('rejected')"
                 class="bg-white text-[#64748B] px-5 py-2 rounded-sm font-medium text-[18px] btn btn-soft"
                 id="tab-rejected">Rejected</button>
         </div>
-        
+
         <!-- Interview Section -->
         <section class="hidden" id="interview-container">
-            
+
         </section>
         <!-- Rejected Section -->
         <section class="hidden" id="rejected-container">
-            
+
         </section>
         <!-- All Card Section -->
         <section id="all-container" class="hidden space-y-5">
             <!-- Card-1 -->
-            <div class="card grid grid-cols-2 justify-end space-y-5 border border-gray-300 p-10 ">
+            <div
+                class="card grid grid-cols-1 lg:grid-cols-2 justify-between gap-5 border border-gray-300 p-5 sm:p-8 lg:p-10">
                 <!-- Main Left -->
-                <div class="space-y-5">
+                <div class="  space-y-5">
                     <!-- Part 1 -->
                     <div>
-                        <p class="job-name text-[1.5rem] font-semibold text-[#002C5C]">Mobile First Corp</p>
+                        <p class="job-name text-xl lg:text-2xl font-semibold text-[#002C5C]">Mobile First Corp</p>
                         <p class="post-name text-[#64748B] text-base font-normal">React Native Developer</p>
                     </div>
                     <!-- Part-2 -->
-                    <div class="flex gap-5">
+                    <div class="">
                         <p class="text-[#64748B] text-base font-normal">Remote • Full-time • $130,000 - $175,000</p>
-                        
+
                     </div>
                     <!-- Part-3 -->
                     <div class="space-y-3">
                         <p class="stats bg-[#EEF4FF] btn">Not Applied</p>
-                        <p class="text-[#323B49] text-base font-normal">Build cross-platform mobile applications using React Native. Work on products used by millions of users worldwide.</p>
+                        <p class="text-[#323B49] text-base font-normal">Build cross-platform mobile applications using
+                            React Native. Work on products used by millions of users worldwide.</p>
                     </div>
                     <!-- Part-4 -->
-                    <div class="flex gap-5">
+                    <div class="flex flex-col sm:flex-row gap-3">
                         <button class="interview-btn btn btn-outline btn-success btn-lg">INTERVIEW</button>
                         <button class="rejected-btn btn btn-outline btn-error btn-lg">REJECTED</button>
                     </div>
@@ -104,30 +103,37 @@
                 </div>
                 <!-- Main Right -->
                 <div class="text-end">
-                    <button class="delete-btn text-gray-400 border border-gray-200 rounded-full p-2 aspect-square btn"><i class="fa-solid fa-trash-can pointer-events-none"></i></button>
+                    <button
+                        class="delete-btn text-gray-400 border border-gray-200 rounded-full p-2 aspect-square btn"><i
+                            class="fa-solid fa-trash-can pointer-events-none"></i></button>
                 </div>
             </div>
             <!-- Card-1 -->
-            <div class="card grid grid-cols-2 justify-end space-y-5 border border-gray-300 p-10 ">
+            <div
+                class="card grid grid-cols-1 lg:grid-cols-2 justify-between gap-5 border border-gray-300 p-5 sm:p-8 lg:p-10">
                 <!-- Main Left -->
-                <div class="space-y-5">
+                <div class="  space-y-5">
                     <!-- Part 1 -->
                     <div>
-                        <p class="job-name text-[1.5rem] font-semibold text-[#002C5C]">Mobile First Corp</p>
-                        <p class="post-name text-[#64748B] text-base font-normal">React Native Developer</p>
+                        <p class="job-name text-xl lg:text-2xl font-semibold text-[#002C5C]">WebFlow Agency</p>
+                        <p class="post-name text-[#64748B] text-base font-normal">Web Designer & Developer</p>
                     </div>
                     <!-- Part-2 -->
-                    <div class="flex gap-5">
-                        <p class="text-[#64748B] text-base font-normal">Remote • Full-time • $130,000 - $175,000</p>
-                        
+                    <div class="">
+                        <p class="text-[#64748B] text-base font-normal">Los Angeles, CA
+ • 
+Part-time 
+•
+ $80,000 - $120,000</p>
+
                     </div>
                     <!-- Part-3 -->
                     <div class="space-y-3">
                         <p class="stats bg-[#EEF4FF] btn">Not Applied</p>
-                        <p class="text-[#323B49] text-base font-normal">Build cross-platform mobile applications using React Native. Work on products used by millions of users worldwide.</p>
+                        <p class="text-[#323B49] text-base font-normal">Create stunning web experiences for high-profile clients. Must have portfolio and experience with modern web design trends.</p>
                     </div>
                     <!-- Part-4 -->
-                    <div class="flex gap-5">
+                    <div class="flex flex-col sm:flex-row gap-3">
                         <button class="interview-btn btn btn-outline btn-success btn-lg">INTERVIEW</button>
                         <button class="rejected-btn btn btn-outline btn-error btn-lg">REJECTED</button>
                     </div>
@@ -136,30 +142,39 @@
                 </div>
                 <!-- Main Right -->
                 <div class="text-end">
-                    <button class="delete-btn text-gray-400 border border-gray-200 rounded-full p-2 aspect-square btn"><i class="fa-solid fa-trash-can pointer-events-none"></i></button>
+                    <button
+                        class="delete-btn text-gray-400 border border-gray-200 rounded-full p-2 aspect-square btn"><i
+                            class="fa-solid fa-trash-can pointer-events-none"></i></button>
                 </div>
             </div>
             <!-- Card-1 -->
-            <div class="card grid grid-cols-2 justify-end space-y-5 border border-gray-300 p-10 ">
+            <div
+                class="card grid grid-cols-1 lg:grid-cols-2 justify-between gap-5 border border-gray-300 p-5 sm:p-8 lg:p-10">
                 <!-- Main Left -->
-                <div class="space-y-5">
+                <div class="  space-y-5">
                     <!-- Part 1 -->
                     <div>
-                        <p class="job-name text-[1.5rem] font-semibold text-[#002C5C]">Mobile First Corp</p>
-                        <p class="post-name text-[#64748B] text-base font-normal">React Native Developer</p>
+                        <p class="job-name text-xl lg:text-2xl font-semibold text-[#002C5C]">DataViz Solutions</p>
+                        <p class="post-name text-[#64748B] text-base font-normal">Data Visualization Specialist</p>
                     </div>
                     <!-- Part-2 -->
-                    <div class="flex gap-5">
-                        <p class="text-[#64748B] text-base font-normal">Remote • Full-time • $130,000 - $175,000</p>
-                        
+                    <div class="">
+                        <p class="text-[#64748B] text-base font-normal">Boston, MA
+                            •
+                            Full-time
+                            •
+                            $125,000 - $165,000</p>
+
                     </div>
                     <!-- Part-3 -->
                     <div class="space-y-3">
                         <p class="stats bg-[#EEF4FF] btn">Not Applied</p>
-                        <p class="text-[#323B49] text-base font-normal">Build cross-platform mobile applications using React Native. Work on products used by millions of users worldwide.</p>
+                        <p class="text-[#323B49] text-base font-normal">Transform complex data into compelling
+                            visualizations. Required skills: D3.js, React, and strong analytical thinking.
+                        </p>
                     </div>
                     <!-- Part-4 -->
-                    <div class="flex gap-5">
+                    <div class="flex flex-col sm:flex-row gap-3">
                         <button class="interview-btn btn btn-outline btn-success btn-lg">INTERVIEW</button>
                         <button class="rejected-btn btn btn-outline btn-error btn-lg">REJECTED</button>
                     </div>
@@ -168,30 +183,38 @@
                 </div>
                 <!-- Main Right -->
                 <div class="text-end">
-                    <button class="delete-btn text-gray-400 border border-gray-200 rounded-full p-2 aspect-square btn"><i class="fa-solid fa-trash-can pointer-events-none"></i></button>
+                    <button
+                        class="delete-btn text-gray-400 border border-gray-200 rounded-full p-2 aspect-square btn"><i
+                            class="fa-solid fa-trash-can pointer-events-none"></i></button>
                 </div>
             </div>
             <!-- Card-1 -->
-            <div class="card grid grid-cols-2 justify-end space-y-5 border border-gray-300 p-10 ">
+            <div
+                class="card grid grid-cols-1 lg:grid-cols-2 justify-between gap-5 border border-gray-300 p-5 sm:p-8 lg:p-10">
                 <!-- Main Left -->
-                <div class="space-y-5">
+                <div class="  space-y-5">
                     <!-- Part 1 -->
                     <div>
-                        <p class="job-name text-[1.5rem] font-semibold text-[#002C5C]">Mobile First Corp</p>
-                        <p class="post-name text-[#64748B] text-base font-normal">React Native Developer</p>
+                        <p class="job-name text-xl lg:text-2xl font-semibold text-[#002C5C]">CloudFirst Inc</p>
+                        <p class="post-name text-[#64748B] text-base font-normal">Backend Developer</p>
                     </div>
                     <!-- Part-2 -->
-                    <div class="flex gap-5">
-                        <p class="text-[#64748B] text-base font-normal">Remote • Full-time • $130,000 - $175,000</p>
-                        
+                    <div class="">
+                        <p class="text-[#64748B] text-base font-normal">Seattle, WA
+                            •
+                            Full-time
+                            •
+                            $140,000 - $190,000</p>
+
                     </div>
                     <!-- Part-3 -->
                     <div class="space-y-3">
                         <p class="stats bg-[#EEF4FF] btn">Not Applied</p>
-                        <p class="text-[#323B49] text-base font-normal">Build cross-platform mobile applications using React Native. Work on products used by millions of users worldwide.</p>
+                        <p class="text-[#323B49] text-base font-normal">Design and maintain scalable backend systems
+                            using Python and AWS. Work with modern DevOps practices and cloud infrastructure.</p>
                     </div>
                     <!-- Part-4 -->
-                    <div class="flex gap-5">
+                    <div class="flex flex-col sm:flex-row gap-3">
                         <button class="interview-btn btn btn-outline btn-success btn-lg">INTERVIEW</button>
                         <button class="rejected-btn btn btn-outline btn-error btn-lg">REJECTED</button>
                     </div>
@@ -200,30 +223,39 @@
                 </div>
                 <!-- Main Right -->
                 <div class="text-end">
-                    <button class="delete-btn text-gray-400 border border-gray-200 rounded-full p-2 aspect-square btn"><i class="fa-solid fa-trash-can pointer-events-none"></i></button>
+                    <button
+                        class="delete-btn text-gray-400 border border-gray-200 rounded-full p-2 aspect-square btn"><i
+                            class="fa-solid fa-trash-can pointer-events-none"></i></button>
                 </div>
             </div>
             <!-- Card-1 -->
-            <div class="card grid grid-cols-2 justify-end space-y-5 border border-gray-300 p-10 ">
+            <div
+                class="card grid grid-cols-1 lg:grid-cols-2 justify-between gap-5 border border-gray-300 p-5 sm:p-8 lg:p-10">
                 <!-- Main Left -->
-                <div class="space-y-5">
+                <div class="  space-y-5">
                     <!-- Part 1 -->
                     <div>
-                        <p class="job-name text-[1.5rem] font-semibold text-[#002C5C]">Mobile First Corp</p>
-                        <p class="post-name text-[#64748B] text-base font-normal">React Native Developer</p>
+                        <p class="job-name text-xl lg:text-2xl font-semibold text-[#002C5C]">Innovation Labs</p>
+                        <p class="post-name text-[#64748B] text-base font-normal">UI/UX Engineer</p>
                     </div>
                     <!-- Part-2 -->
-                    <div class="flex gap-5">
-                        <p class="text-[#64748B] text-base font-normal">Remote • Full-time • $130,000 - $175,000</p>
-                        
+                    <div class="">
+                        <p class="text-[#64748B] text-base font-normal">Austin, TX
+                            •
+                            Full-time
+                            •
+                            $110,000 - $150,000</p>
+
                     </div>
                     <!-- Part-3 -->
                     <div class="space-y-3">
                         <p class="stats bg-[#EEF4FF] btn">Not Applied</p>
-                        <p class="text-[#323B49] text-base font-normal">Build cross-platform mobile applications using React Native. Work on products used by millions of users worldwide.</p>
+                        <p class="text-[#323B49] text-base font-normal">Create beautiful and functional user interfaces
+                            for our suite of products. Strong design skills and frontend development expertise required.
+                        </p>
                     </div>
                     <!-- Part-4 -->
-                    <div class="flex gap-5">
+                    <div class="flex flex-col sm:flex-row gap-3">
                         <button class="interview-btn btn btn-outline btn-success btn-lg">INTERVIEW</button>
                         <button class="rejected-btn btn btn-outline btn-error btn-lg">REJECTED</button>
                     </div>
@@ -232,30 +264,39 @@
                 </div>
                 <!-- Main Right -->
                 <div class="text-end">
-                    <button class="delete-btn text-gray-400 border border-gray-200 rounded-full p-2 aspect-square btn"><i class="fa-solid fa-trash-can pointer-events-none"></i></button>
+                    <button
+                        class="delete-btn text-gray-400 border border-gray-200 rounded-full p-2 aspect-square btn"><i
+                            class="fa-solid fa-trash-can pointer-events-none"></i></button>
                 </div>
             </div>
             <!-- Card-1 -->
-            <div class="card grid grid-cols-2 justify-end space-y-5 border border-gray-300 p-10 ">
+            <div
+                class="card grid grid-cols-1 lg:grid-cols-2 justify-between gap-5 border border-gray-300 p-5 sm:p-8 lg:p-10">
                 <!-- Main Left -->
-                <div class="space-y-5">
+                <div class="  space-y-5">
                     <!-- Part 1 -->
                     <div>
-                        <p class="job-name text-[1.5rem] font-semibold text-[#002C5C]">Mobile First Corp</p>
-                        <p class="post-name text-[#64748B] text-base font-normal">React Native Developer</p>
+                        <p class="job-name text-xl lg:text-2xl font-semibold text-[#002C5C]">MegaCorp Solutions</p>
+                        <p class="post-name text-[#64748B] text-base font-normal">JavaScript Developer</p>
                     </div>
                     <!-- Part-2 -->
-                    <div class="flex gap-5">
-                        <p class="text-[#64748B] text-base font-normal">Remote • Full-time • $130,000 - $175,000</p>
-                        
+                    <div class="">
+                        <p class="text-[#64748B] text-base font-normal">New York, NY
+                            •
+                            Full-time
+                            •
+                            $130,000 - $170,00</p>
+
                     </div>
                     <!-- Part-3 -->
                     <div class="space-y-3">
                         <p class="stats bg-[#EEF4FF] btn">Not Applied</p>
-                        <p class="text-[#323B49] text-base font-normal">Build cross-platform mobile applications using React Native. Work on products used by millions of users worldwide.</p>
+                        <p class="text-[#323B49] text-base font-normal">Build enterprise applications with JavaScript
+                            and modern frameworks. We offer competitive compensation, health insurance, and professional
+                            development opportunities.</p>
                     </div>
                     <!-- Part-4 -->
-                    <div class="flex gap-5">
+                    <div class="flex flex-col sm:flex-row gap-3">
                         <button class="interview-btn btn btn-outline btn-success btn-lg">INTERVIEW</button>
                         <button class="rejected-btn btn btn-outline btn-error btn-lg">REJECTED</button>
                     </div>
@@ -264,30 +305,39 @@
                 </div>
                 <!-- Main Right -->
                 <div class="text-end">
-                    <button class="delete-btn text-gray-400 border border-gray-200 rounded-full p-2 aspect-square btn"><i class="fa-solid fa-trash-can pointer-events-none"></i></button>
+                    <button
+                        class="delete-btn text-gray-400 border border-gray-200 rounded-full p-2 aspect-square btn"><i
+                            class="fa-solid fa-trash-can pointer-events-none"></i></button>
                 </div>
             </div>
             <!-- Card-1 -->
-            <div class="card grid grid-cols-2 justify-end space-y-5 border border-gray-300 p-10 ">
+            <div
+                class="card grid grid-cols-1 lg:grid-cols-2 justify-between gap-5 border border-gray-300 p-5 sm:p-8 lg:p-10">
                 <!-- Main Left -->
-                <div class="space-y-5">
+                <div class="  space-y-5">
                     <!-- Part 1 -->
                     <div>
-                        <p class="job-name text-[1.5rem] font-semibold text-[#002C5C]">Mobile First Corp</p>
-                        <p class="post-name text-[#64748B] text-base font-normal">React Native Developer</p>
+                        <p class="job-name text-xl lg:text-2xl font-semibold text-[#002C5C]">StartupXYZ</p>
+                        <p class="post-name text-[#64748B] text-base font-normal">Full Stack Engineer</p>
                     </div>
                     <!-- Part-2 -->
-                    <div class="flex gap-5">
-                        <p class="text-[#64748B] text-base font-normal">Remote • Full-time • $130,000 - $175,000</p>
-                        
+                    <div class="">
+                        <p class="text-[#64748B] text-base font-normal">Remote
+                            •
+                            Full-time
+                            •
+                            $120,000 - $160,000</p>
+
                     </div>
                     <!-- Part-3 -->
                     <div class="space-y-3">
                         <p class="stats bg-[#EEF4FF] btn">Not Applied</p>
-                        <p class="text-[#323B49] text-base font-normal">Build cross-platform mobile applications using React Native. Work on products used by millions of users worldwide.</p>
+                        <p class="text-[#323B49] text-base font-normal">Join our fast-growing startup and work on our
+                            core platform. Experience with Node.js and React required. Great benefits and equity package
+                            included.</p>
                     </div>
                     <!-- Part-4 -->
-                    <div class="flex gap-5">
+                    <div class="flex flex-col sm:flex-row gap-3">
                         <button class="interview-btn btn btn-outline btn-success btn-lg">INTERVIEW</button>
                         <button class="rejected-btn btn btn-outline btn-error btn-lg">REJECTED</button>
                     </div>
@@ -296,30 +346,39 @@
                 </div>
                 <!-- Main Right -->
                 <div class="text-end">
-                    <button class="delete-btn text-gray-400 border border-gray-200 rounded-full p-2 aspect-square btn"><i class="fa-solid fa-trash-can pointer-events-none"></i></button>
+                    <button
+                        class="delete-btn text-gray-400 border border-gray-200 rounded-full p-2 aspect-square btn"><i
+                            class="fa-solid fa-trash-can pointer-events-none"></i></button>
                 </div>
             </div>
             <!-- Card-1 -->
-            <div class="card grid grid-cols-2 justify-end space-y-5 border border-gray-300 p-10 ">
+            <div
+                class="card grid grid-cols-1 lg:grid-cols-2 justify-between gap-5 border border-gray-300 p-5 sm:p-8 lg:p-10">
                 <!-- Main Left -->
-                <div class="space-y-5">
+                <div class="  space-y-5">
                     <!-- Part 1 -->
                     <div>
-                        <p class="job-name text-[1.5rem] font-semibold text-[#002C5C]">Mobile First Corp</p>
-                        <p class="post-name text-[#64748B] text-base font-normal">React Native Developer</p>
+                        <p class="job-name text-xl lg:text-2xl font-semibold text-[#002C5C]">TechCorp Industries</p>
+                        <p class="post-name text-[#64748B] text-base font-normal">Senior Frontend Developer</p>
                     </div>
                     <!-- Part-2 -->
-                    <div class="flex gap-5">
-                        <p class="text-[#64748B] text-base font-normal">Remote • Full-time • $130,000 - $175,000</p>
-                        
+                    <div class="">
+                        <p class="text-[#64748B] text-base font-normal">San Francisco, CA
+                            •
+                            Full-time
+                            •
+                            $130,000 - $175,000</p>
+
                     </div>
                     <!-- Part-3 -->
                     <div class="space-y-3">
                         <p class="stats bg-[#EEF4FF] btn">Not Applied</p>
-                        <p class="text-[#323B49] text-base font-normal">Build cross-platform mobile applications using React Native. Work on products used by millions of users worldwide.</p>
+                        <p class="text-[#323B49] text-base font-normal">We are looking for an experienced Frontend
+                            Developer to build scalable web applications using React and TypeScript. You will work with
+                            a talented team on cutting-edge projects.</p>
                     </div>
                     <!-- Part-4 -->
-                    <div class="flex gap-5">
+                    <div class="flex flex-col sm:flex-row gap-3">
                         <button class="interview-btn btn btn-outline btn-success btn-lg">INTERVIEW</button>
                         <button class="rejected-btn btn btn-outline btn-error btn-lg">REJECTED</button>
                     </div>
@@ -328,14 +387,18 @@
                 </div>
                 <!-- Main Right -->
                 <div class="text-end">
-                    <button class="delete-btn text-gray-400 border border-gray-200 rounded-full p-2 aspect-square btn"><i class="fa-solid fa-trash-can pointer-events-none"></i></button>
+                    <button
+                        class="delete-btn text-gray-400 border border-gray-200 rounded-full p-2 aspect-square btn"><i
+                            class="fa-solid fa-trash-can pointer-events-none"></i></button>
                 </div>
             </div>
-            
-            
+
+
+
+
         </section>
         <!-- Empty Card -->
-        <section class=" flex flex-col items-center p-30 bg-white rounded-xl space-y-2 " id="empty-card">
+        <section class=" flex flex-col items-center p-10 md:p-30 bg-white rounded-xl space-y-2 " id="empty-card">
             <img class="w-[120px] mb-6" src="jobs.png" alt="">
             <h2 class="header-title text-[1.25rem] font-bold text-[#002C5C]">No jobs available</h2>
             <p class="post-name text-[#64748B] text-base font-normal">Check back soon for new job opportunities</p>
